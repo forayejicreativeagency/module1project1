@@ -78,28 +78,42 @@ switch($number){
 </head>
 <body>
     <h1>Page Links</h1>
-    <!-- Write anthor to connect with other pages-->
+    <!-- Links to other pages-->
     <div class="links">
         <a href="number-classifier.php">Number Classifier</a>
         <a href="temperature-converter.php">Temperature Converter</a>
         <a href="basic-auth-system.php">Basic Auth System</a>
         <a href="symple-electricty-bil.php">Symple Electricty Bill</a>
     </div>
+
     <h1>Number Classifier</h1>
     <form action="" method="post">
         <input type="number" name="number" placeholder="Enter a number" required>
         <input type="submit" value="Classify Number">
     </form>
+
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $number = $_POST["number"];
-        if ($number > 0) {
-            echo "$number is a positive value.";
+
+        // Positive, Negative or Zero
+        if ($number > 0) {;
+            // Odd or Even Check
+            if ($number % 2 == 0) {
+                echo "$number is a positive and even number.";
+            } else {
+                echo "$number is a positive and odd number.";
+            }
         } elseif ($number < 0) {
-            echo "$number is a negative value.";
+            // Odd or Even Check
+            if ($number % 2 == 0) {
+                echo "$number is a negative and even number.";
+            } else {
+                echo "$number is a negative and odd number.";
+            }
         } else {
-            echo "$number is zero.";
+            echo "$number is zero which is an even number.<br>";
         }
-    }   
+    }
     ?>
 </body>
